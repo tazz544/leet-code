@@ -1,16 +1,28 @@
-type ReturnObj = {
+type Counter = {
     increment: () => number,
     decrement: () => number,
     reset: () => number,
 }
 
-function createCounter(init: number): ReturnObj {
-    let counter: number = init;
+function createCounter(init: number): Counter {
+    let value = init;
 
     return {
-        increment: () => counter = counter + 1,
-        decrement: () => counter = counter - 1,
-        reset: () => counter = init
+        increment: () => {
+            value += 1;
+
+            return value;
+        },
+        decrement: () => {
+            value -= 1;
+
+            return value;
+        },
+        reset: () => {
+            value = init;
+
+            return value;
+        }
     }
 };
 
