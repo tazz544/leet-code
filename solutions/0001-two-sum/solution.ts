@@ -1,20 +1,16 @@
 function twoSum(nums: number[], target: number): number[] {
-    const result = nums.reduce((acc, xValue, xIndex) => {
-        const numbersPair = [];
+    const numsMap = new Map<number, number>();
 
-        nums.forEach((yValue, yIndex) => {
-            if (xIndex === yIndex || numbersPair.length) {
-                return;
-            }
+    for (let i = 0; i < nums.length; i++) {
+        const num = nums[i];
+        const rest = target - num;
 
-            if (xValue + yValue === target) {
-                numbersPair[0] = xIndex;
-                numbersPair[1] = yIndex;
-            }
-        });
+        if (numsMap.has(rest)) {
+            return [i, numsMap.get(rest)];
+        }
 
-        return numbersPair.length ? acc = numbersPair : acc;
-    }, []).sort((a, b) => a - b);
+        numsMap.set(num, i);
+    }
 
-    return result;
+    return [];
 };
