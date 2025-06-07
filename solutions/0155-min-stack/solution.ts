@@ -1,8 +1,10 @@
 class MinStack {
     stack: number[];
+    minStack: number[];
 
     constructor() {
         this.stack = [];
+        this.minStack = [];
     }
 
     push(val: number): void {
